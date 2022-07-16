@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 
 import { axiosConfig } from "utils/axiosConfig";
-import { GET_TERMS } from "constans/API";
+import { GET_BRANDS } from "constans/API";
 
 import SelectComponent from "components/SelectComponent";
 
-const SelectTerm = ({ term, setTerm }) => {
+const SelectBrand = ({ brand, setBrand }) => {
   const [options, setOptions] = useState(null);
 
   useEffect(() => {
     axiosConfig({
       method: "get",
-      url: GET_TERMS,
+      url: GET_BRANDS,
     })
       .then((resp) => {
         setOptions(resp.data.data);
@@ -25,14 +25,14 @@ const SelectTerm = ({ term, setTerm }) => {
     <Box>
       {options && (
         <SelectComponent
-          value={term}
-          setValue={setTerm}
+          value={brand}
+          setValue={setBrand}
           options={options}
-          name={"Term"}
+          name={"Brand"}
         />
       )}
     </Box>
   );
 };
 
-export default SelectTerm;
+export default SelectBrand;
