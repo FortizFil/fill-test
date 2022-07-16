@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [brand, setBrand] = useState("");
   const [style, setStyle] = useState("");
   return (
-    <Box>
+    <Box sx={{ padding: "15px", display: "flex", justifyContent: "space-between" }}>
       <SelectTerm term={term} setTerm={setTerm} />
       <SelectBrand brand={brand} setBrand={setBrand} />
       <SelectStyle style={style} setStyle={setStyle} />
