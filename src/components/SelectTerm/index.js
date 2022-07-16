@@ -1,21 +1,38 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
+
+import { Box } from "@mui/material/Box";
 
 import { axiosConfig } from "utils/axiosConfig";
-import {GET_TERMS} from 'constans/API'
+import { GET_TERMS } from "constans/API";
 
-const SelectTerm = ({term,setTerm})=> {
-    const [options,setOptions] = useState(null)
+import SelectComponent from "components/SelectComponent";
 
-    useEffect(()=>{
-        axiosConfig({
-            method:'get',
-            url:GET_TERMS
-        }).then(resp=>{
-            setOptions(resp.data)
-        }).catch((error)=>console.log(error))
-    },[])
+const SelectTerm = ({ term, setTerm }) => {
+  const [options, setOptions] = useState(null);
 
-    return <h2>Select Term</h2>
-}
+  useEffect(() => {
+    axiosConfig({
+      method: "get",
+      url: GET_TERMS,
+    })
+      .then((resp) => {
+        setOptions(resp.data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-export default SelectTerm
+  return (
+    <Box>
+      {options && (
+        <SelectComponent
+          value={term}
+          setValue={setTerm}
+          options={options}
+          name={"Term"}
+        />
+      )}
+    </Box>
+  );
+};
+
+export default SelectTerm;
