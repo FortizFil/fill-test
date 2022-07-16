@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
 
-import './App.css';
+import {axiosConfig} from 'utils/axiosConfig'
+import {GET_TERMS} from 'constans/API'
 
 function App() {
+
+  useEffect(()=>{
+    axiosConfig({
+      method:'get',
+      url:GET_TERMS
+    }).then((resp)=>console.log(resp))
+  },[])
+
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <h1>Hell fggo</h1>
     </div>
   );
 }
