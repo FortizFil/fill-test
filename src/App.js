@@ -1,11 +1,7 @@
-import Dashboard from 'components/Dashboard'
+import Pages from "pages";
 
 function App() {
-
-
-  return (
-    <Dashboard/>
-  );
+  return <Pages />;
 }
 
 export default App;
